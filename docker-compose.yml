@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./paycrow-backend
+      dockerfile: Dockerfile
+    working_dir: /app
+    command: npm start
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - MONGO_URL=mongodb://seineale:password@mongo:27017/
+      - JWT_SECRET_KEY=your_jwt_secret_key
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ./paycrow-frontend
+      dockerfile: Dockerfile
+    working_dir: /app
+    command: sh -c "while ! curl -s http://backend:3000/health; do sleep 2; done && npm run dev"
+    environment:
+      - NODE_ENV=development
+      - VITE_PORT=3001
+      - VITE_BASE_URL=http://localhost:3000
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo:latest
+    container_name: local_mongo_db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=seineale
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    ports:
+      - "27017:27017"
+    volumes:
+      - local_db_volume:/local_data
+
+volumes:
+  local_db_volume:
