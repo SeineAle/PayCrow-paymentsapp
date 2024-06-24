@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const useAuth = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL || "";
   const getUser = async () => {
     const token = localStorage.getItem("token");
     try {
