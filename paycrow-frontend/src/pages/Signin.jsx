@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../auth";
 
 export default function Signin() {
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL || "";
   const {
     register,
     handleSubmit,

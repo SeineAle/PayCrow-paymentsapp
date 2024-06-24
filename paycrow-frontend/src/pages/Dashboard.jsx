@@ -12,7 +12,7 @@ import Transaction from "../assets/svg/transaction.svg";
 import UpdateProfile from "../assets/svg/update.svg";
 
 export default function Dashboard() {
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL || "";
   const [balance, setBalance] = useState(0);
   const [load, setLoad] = useState(false);
   const navigate = useNavigate();

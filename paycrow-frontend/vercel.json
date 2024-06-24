@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "source": "/api/(.*)",
+      "destination": "http://paycrow-backend.ap-south-1.elasticbeanstalk.com/api/$1"
     }
   ]
 }

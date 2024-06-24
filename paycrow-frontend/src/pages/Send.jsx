@@ -14,7 +14,7 @@ import PayDone from "../payment.json";
 import { useAuth } from "../auth";
 
 export default function Send() {
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL || "";
   const [searchParams, setSearchParams] = useSearchParams();
   const name = searchParams.get("name");
   const id = searchParams.get("id");

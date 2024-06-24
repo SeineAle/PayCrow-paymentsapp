@@ -7,7 +7,7 @@ import Three from "../assets/svg/three.svg";
 import Cross from "../assets/svg/cross.svg";
 import { useAuth } from "../auth";
 export default function NavBar() {
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL || "";
   const user = useAuth();
   const navigate = useNavigate();
   const [clicked, setClicked] = useState(false);

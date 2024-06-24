@@ -11,7 +11,7 @@ import { useAuth } from "../auth";
 import { useEffect, useState } from "react";
 
 export default function UpdateTab() {
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL || "";
   const navigate = useNavigate();
   const {
     register,

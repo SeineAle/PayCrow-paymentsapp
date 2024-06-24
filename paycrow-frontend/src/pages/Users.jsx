@@ -11,7 +11,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
 export default function AllUser() {
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
+  const BASE_URL = import.meta.env.VITE_BASE_URL || "";
   const [totalUsers, setTotalUsers] = useState([]);
   const [users, setUser] = useState([]);
   const [searchLoad, setSearchLoad] = useState(false);
