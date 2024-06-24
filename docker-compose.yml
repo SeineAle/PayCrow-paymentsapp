@@ -10,7 +10,7 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=3000
-      - MONGO_URL=mongodb://seineale:password@mongo:27017/
+      - MONGO_URL=mongodb://your_username:your_password@mongo:27017/
       - JWT_SECRET_KEY=your_jwt_secret_key
     ports:
       - "3000:3000"
@@ -28,7 +28,7 @@ services:
       context: ./paycrow-frontend
       dockerfile: Dockerfile
     working_dir: /app
-    command: sh -c "while ! curl -s http://backend:3000/health; do sleep 2; done && npm run dev"
+    command: sh -c "while ! curl -s http://localhost:3000/health; do sleep 2; done && npm run dev"
     environment:
       - NODE_ENV=development
       - VITE_PORT=3001
@@ -42,8 +42,8 @@ services:
     image: mongo:latest
     container_name: local_mongo_db
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=seineale
-      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_ROOT_USERNAME=your_username
+      - MONGO_INITDB_ROOT_PASSWORD=your_password
     ports:
       - "27017:27017"
     volumes:

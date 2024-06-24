@@ -13,12 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-//Env files
-
-// require("dotenv").config();
-
-//Estabilishing the mongoose
-
 main().catch((err) => console.log(err));
 
 //Routes
@@ -35,7 +29,6 @@ app.use("/api/v1", rootRouter);
 
 async function main() {
   await mongoose.connect(process.env.MONGO_URL);
-  // await mongoose.connect("mongodb://seineale:password@0.0.0.0:27017/");
   console.log("db connected");
   app.listen(PORT, (req, res) => {
     console.log(`Server started, listening on port ${PORT}`);
